@@ -1,6 +1,11 @@
 module Main where
 
-import Lib
+import Backend.Scraper
+import Prelude
 
 main :: IO ()
-main = someFunc
+main = do
+    res <- titles
+    case res of 
+        Just toShow -> print (map (\el -> toJSON el) toShow)
+        Nothing -> undefined
